@@ -1,38 +1,26 @@
 [
     {
         "name" : "Harshit",
-        "email" : "harsh@gmail.com",
-        "age" : 32,
-        "city" : "MBD"
+        "email" : "harsh@gmail.com"
     },
     {
         "name" : "Ravi",
-        "email" : "ravi@gmail.com",
-        "age" : 42,
-        "city" : "Delhi"
+        "email" : "ravi@gmail.com"
     },
     {
         "name" : "Akash",
-        "email" : "akash@gmail.com",
-        "age" : 25,
-        "city" : "Noida"
+        "email" : "akash@gmail.com"
     },
     {
         "name" : "Mohit",
-        "email" : "mohit@gmail.com",
-        "age" : 35,
-        "city" : "Meerut"
+        "email" : "mohit@gmail.com"
     },
     {
         "name" : "Jeetu",
-        "email" : "jeet@gmail.com",
-        "age" : 28,
-        "city" : "MBD"
+        "email" : "jeet@gmail.com"
     },
     {
         "name" : "Navil",
-        "email" : "navil@gmail.com",
-        "age" : 23,
-        "city" : "Gurugram"
+        "email" : "navil@gmail.com"
     }
 ]

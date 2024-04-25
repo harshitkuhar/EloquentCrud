@@ -12,7 +12,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        //return $users;
+        return view('users', ['users' => $users]);
     }
 
     /**
@@ -20,7 +22,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('adduser');
     }
 
     /**
@@ -28,7 +30,25 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'image' => 'nullable|mimes:png,jpg,jpeg',
+        ]);
+
+        if ($request->has('image')) {
+            $file = $request->image;
+            $ext = $file->getClientOriginalExtension();
+            return $ext;
+        }
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'image' => $request->image,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 
     /**
@@ -36,7 +56,9 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        $user = User::findOrFail($user->id);
+        // return $user;
+        return view('showuser', ['user' => $user]);
     }
 
     /**

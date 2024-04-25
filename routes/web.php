@@ -1,18 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// GET|HEAD          user ..................................................................... user.index
+// POST            user ..................................................................... user.store
+// GET|HEAD        user/create ............................................................ user.create
+// GET|HEAD        user/{user} ................................................................ user.show
+// PUT|PATCH       user/{user} ............................................................ user.update
+// DELETE          user/{user} .......................................................... user.destroy
+// GET|HEAD        user/{user}/edit ........................................................... user.edit
+
+
+Route::resource('/user', UserController::class);

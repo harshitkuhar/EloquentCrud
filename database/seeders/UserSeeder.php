@@ -22,8 +22,6 @@ class UserSeeder extends Seeder
             User::create([
                 'name' => $user->name,
                 'email' => $user->email,
-                'age' => $user->age,
-                'city' => $user->city,
             ]);
         }
     }
