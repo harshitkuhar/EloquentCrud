@@ -10,16 +10,16 @@
         <table class="table table-striped table-bordered">
             <tbody>
                     <tr>
-                        <td>Name: </td>
+                        <td><b>Name:</b> </td>
                         <td>{{$user->name}}</td>
                     </tr>
                     <tr>
-                        <td>Email: </td>
+                        <td><b>Email:</b> </td>
                         <td>{{$user->email}}</td>
                     </tr>
                     <tr>
-                        <td>Avatar: </td>
-                        <td>{{$user->image}}</td>
+                        <td><b>Avatar:</b> </td>
+                        <td><img src="{{asset('/storage/' . $user->image)}}" alt="" class="img-fluid" style="width:15%;"></td>
                     </tr>
             </tbody>
         </table>

@@ -37,18 +37,19 @@ class UserController extends Controller
         ]);
 
         if ($request->has('image')) {
-            $file = $request->image;
-            $ext = $file->getClientOriginalExtension();
-            return $ext;
+            $file = $request->image->store('image', 'public');
         }
+        // return $file;
 
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'image' => $request->image,
+            'image' => $request->has('image') ? $file : null,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+
+        return redirect()->route('user.index')->with('message', 'User Added Successfully!');
     }
 
     /**
@@ -66,7 +67,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        $user = User::find($user->id);
+        //return $user;
+        return view('updateuser', ['user' => $user]);
     }
 
     /**
@@ -74,7 +77,25 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'image' => 'nullable|mimes:png,jpg,jpeg',
+        ]);
+
+        if ($request->has('image')) {
+            $file = $request->image->store('image', 'public');
+        }
+
+        User::where('id', $user->id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'image' => $request->has('image') ? $file : null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        return redirect()->route('user.index')->with('message', 'User Updated Successfully!');
     }
 
     /**
@@ -82,6 +103,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user = User::find($user->id);
+        $user->delete();
+        return redirect()->route('user.index')->with('message', 'User Deleted Successfully!');
     }
 }
